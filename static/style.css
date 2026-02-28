@@ -1,0 +1,189 @@
+body {
+    margin: 0;
+    font-family: 'Segoe UI', sans-serif;
+    background: url("/static/hotel.jpg") no-repeat center center fixed;
+    background-size: cover;
+}
+
+/* Overlay */
+body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    background: linear-gradient(
+        rgba(0, 0, 0, 0.75),
+        rgba(0, 0, 0, 0.55)
+    );
+    z-index: -1;
+}
+
+/* Main container glass effect */
+.container {
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
+    padding: 40px;
+    border-radius: 25px;
+    margin-top: 40px;
+    box-shadow: 0 25px 60px rgba(0,0,0,0.6);
+    border: 1px solid rgba(255,255,255,0.25);
+}
+
+/* Cards */
+.card-stat {
+    border-radius: 20px;
+    padding: 25px;
+    color: white;
+    font-weight: bold;
+    transition: 0.3s ease;
+}
+
+.card-stat:hover {
+    transform: translateY(-6px);
+}
+
+/* Table */
+table {
+    background: transparent !important;
+    color: white;
+}
+thead {
+    background: rgba(0,0,0,0.7) !important;
+    color: white;
+}
+
+/* Title */
+h1 {
+    color: white;
+    font-weight: bold;
+}
+
+/* === LUXURY COLORS === */
+
+.card-stat {
+    border-radius: 20px;
+    padding: 25px;
+    font-weight: 600;
+    color: white;
+    background: linear-gradient(145deg, #1e1e1e, #2c2c2c);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+}
+
+/* Custom colors */
+.card-stat {
+    background: rgba(20, 20, 20, 0.65);
+    backdrop-filter: blur(6px);
+    border-radius: 15px;
+    padding: 25px;
+    color: white;
+    text-align: center;
+    box-shadow: 0 6px 20px rgba(0,0,0,0.4);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.card-stat:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.6);
+}
+
+.card-stat h5 {
+    font-size: 15px;
+    opacity: 0.7;
+}
+
+.card-stat h2 {
+    font-size: 30px;
+    font-weight: bold;
+}
+.form-control {
+    background: rgba(20,20,20,0.6);
+    color: white;
+    border: 1px solid rgba(255,255,255,0.2);
+}
+
+.form-control::placeholder {
+    color: rgba(255,255,255,0.6);
+}
+.row {
+    justify-content: flex-start !important;
+}
+
+.card {
+    background: rgba(20, 20, 20, 0.55) !important;
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    border-radius: 20px;
+    border: 1px solid rgba(255,255,255,0.1);
+    box-shadow: 0 8px 32px rgba(0,0,0,0.4);
+    color: white;
+}
+.glass-table {
+    background: rgba(15, 15, 15, 0.85);
+    border-radius: 15px;
+    padding: 15px;
+    backdrop-filter: blur(8px);
+}
+
+.glass-table table {
+    color: white;
+    margin-bottom: 0;
+}
+
+.glass-table thead {
+    background: rgba(255, 255, 255, 0.05);
+}
+
+.glass-table th {
+    color: #bbbbbb;
+    font-weight: 500;
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+}
+
+.glass-table td {
+    border-color: rgba(255,255,255,0.05);
+}
+
+.glass-table tbody tr:hover {
+    background: rgba(255,255,255,0.03);
+}
+
+
+/* نخلي table بلا خلفية بيضاء */
+.glass-table table {
+    background-color: transparent !important;
+}
+
+/* نخلي الصفوف بلا خلفية */
+.glass-table tbody tr {
+    background-color: transparent !important;
+}
+
+/* نحيد الخلفية البيضاء ديال bootstrap */
+.table {
+    --bs-table-bg: transparent !important;
+}
+
+
+/* ===== Fix table text color ===== */
+
+.glass-table,
+.glass-table th,
+.glass-table td {
+    color: #ffffff !important;
+}
+
+.glass-table thead th {
+    color: #ffffff !important;
+    font-weight: 600;
+}
+
+/* Inputs داخل الجدول */
+.glass-table input {
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.15);
+    color: white;
+}
+
+.glass-table input::placeholder {
+    color: rgba(255,255,255,0.5);
+}

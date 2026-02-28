@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Hostify</title>
+
+    <!-- Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+<div class="d-flex justify-content-between align-items-center mb-4">
+    <div>
+    <h1 class="main-title text-white m-0">🚀 Hostify</h1>
+    <small class="text-light opacity-75 d-block">
+        Smart Hostel Management System
+    </small>
+</div>
+
+    <div>
+        <a href="/add-room" class="btn btn-success me-2">
+            + Add Room
+        </a>
+
+        <a href="/export-pdf" class="btn btn-primary me-2">
+            Download Report
+        </a>
+
+        <a href="/backup" class="btn btn-secondary me-2">
+            Download Backup
+        </a>
+
+        <a href="/logout" class="btn btn-danger">
+            Logout
+        </a>
+    </div>
+</div>
+    <!-- DASHBOARD -->
+    <div class="row mb-4 g-4">
+
+        <div class="col-md-3">
+            <div class="card-stat">
+                <h5>Rooms</h5>
+                <h2>{{ total_rooms }}</h2>
+            </div>
+        </div>
+
+        <div class="col-md-3">
+            <div class="card-stat">
+                <h5>Guests</h5>
+                <h2>{{ total_guests }}</h2>
+            </div>
+        </div>
+
+        <div class="col-md-3">
+            <div class="card-stat">
+                <h5>Warning</h5>
+                <h2 class="text-warning">{{ total_warning }}</h2>
+            </div>
+        </div>
+
+        <div class="col-md-3">
+            <div class="card-stat">
+                <h5>Expired</h5>
+                <h2 class="text-danger">{{ total_expired }}</h2>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- SEARCH -->
+    <form method="GET">
+    <input type="text"
+           name="search"
+           value="{{ keyword }}"
+           class="form-control mb-3"
+           placeholder="Search room / name / ID...">
+</form>
+
+    <!-- TABLE -->
+    <div class="card p-3">
+        <div class="glass-table p-3">
+        <table class="table table-hover text-center align-middle">
+            <thead class="table-dark">
+                <tr>
+                    <th>Room</th>
+                    <th>Beds</th>
+                    <th>Occupied</th>
+                    <th>Free</th>
+                    <th>Guests</th>
+                    <th>Delete</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for room in rooms %}
+                <tr>
+                    <td>
+                        <a href="{{ url_for('room_details', room_number=room.room) }}">
+                            {{ room.room }}
+                        </a>
+                    </td>
+                    <td>{{ room.beds }}</td>
+                    <td>{{ room.occupied }}</td>
+                    <td>{{ room.free }}</td>
+                    <td>{{ room.occupied }}</td>
+                    <td>
+    <form method="POST"
+          action="/delete_room/{{ room.room }}"
+          onsubmit="return confirm('Delete this room?')">
+        <button class="btn btn-danger btn-sm">🗑</button>
+    </form>
+</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        </div>
+    </div>
+
+</div>
+
+</body>
+</html>

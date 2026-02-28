@@ -1,0 +1,32 @@
+[
+    {
+        "room": "303",
+        "beds": 6,
+        "guests": [
+            {
+                "id": "6523478",
+                "name": "h",
+                "stay_days": 30,
+                "checkin": "2026-02-28"
+            },
+            {
+                "id": "24566789098",
+                "name": "YASsine el",
+                "stay_days": 1,
+                "checkin": "2026-02-28"
+            }
+        ]
+    },
+    {
+        "room": "309",
+        "beds": 8,
+        "guests": [
+            {
+                "id": "23456",
+                "name": "Walid Benzine",
+                "stay_days": 30,
+                "checkin": "2026-02-28"
+            }
+        ]
+    }
+]
