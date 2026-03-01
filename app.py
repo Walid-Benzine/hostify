@@ -23,7 +23,7 @@ app.secret_key = "super_secret_key_2025"
 USERNAME = "Boss"
 PASSWORD = "1234nadi"
 
-DATA_FILE = "data.json"
+DATA_FILE = "/var/data/data.json"
 
 # ================= DATA =================
 def load_data():
