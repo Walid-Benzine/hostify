@@ -93,7 +93,7 @@ def home():
 
     for r in data:
         occ = len(r["guests"])
-        free = r["beds"] - occ
+        free = r.get("beds", 0) - occ
 
         match_room = keyword in r["room"].lower()
 
@@ -119,7 +119,7 @@ def home():
 
         filtered_rooms.append({
             "room": r["room"],
-            "beds": r["beds"],
+            "beds": r.get("beds", 0),
             "occupied": occ,
             "free": free
         })
