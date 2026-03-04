@@ -353,7 +353,7 @@ def edit_guest(room_number, guest_id):
 
     return render_template("edit_guest.html", guest=guest, room=room)
 
-    @app.route("/add_guest/<room_number>", methods=["POST"])
+@app.route("/add_guest/<room_number>", methods=["POST"])
 @login_required
 def add_guest(room_number):
 
