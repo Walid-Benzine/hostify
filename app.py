@@ -205,7 +205,7 @@ checkin = request.form["checkin"].strip()
 checkout = request.form["checkout"].strip()
 note = request.form["note"].strip()
 
-    if not guest_id or not name or not stay_days.isdigit():
+    if not guest_id or not name:
         return redirect(f"/room/{room_number}")
 
     # تحقق من ID مكرر
