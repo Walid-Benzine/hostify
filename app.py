@@ -200,10 +200,10 @@ def add_guest(room_number):
         return redirect("/")
 
     guest_id = request.form["id"].strip()
-name = request.form["name"].strip()
-checkin = request.form["checkin"].strip()
-checkout = request.form["checkout"].strip()
-note = request.form["note"].strip()
+    name = request.form["name"].strip()
+    checkin = request.form["checkin"].strip()
+    checkout = request.form["checkout"].strip()
+    note = request.form["note"].strip()
 
     if not guest_id or not name:
         return redirect(f"/room/{room_number}")
