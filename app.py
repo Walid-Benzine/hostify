@@ -353,6 +353,38 @@ def edit_guest(room_number, guest_id):
 
     return render_template("edit_guest.html", guest=guest, room=room)
 
+    @app.route("/add_guest/<room_number>", methods=["POST"])
+@login_required
+def add_guest(room_number):
+
+    data = load_data()
+    room = get_room(data, room_number)
+
+    guest_id = request.form["id"].strip()
+    name = request.form["name"].strip()
+    checkin = request.form["checkin"]
+    checkout = request.form["checkout"]
+    note = request.form["note"]
+
+    print(guest_id, name, checkin, checkout, note)
+
+    if not guest_id or not name:
+        return redirect(f"/room/{room_number}")
+
+    new_guest = {
+        "id": guest_id,
+        "name": name,
+        "checkin": checkin,
+        "checkout": checkout,
+        "note": note
+    }
+
+    room["guests"].append(new_guest)
+
+    save_data(data)
+
+    return redirect(f"/room/{room_number}")
+
     import os
 
 if __name__ == "__main__":
