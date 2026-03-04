@@ -189,40 +189,6 @@ def room_details(room_number):
         room=room,
         guests=guests_with_days
     )
-
-@app.route("/add_guest/<room_number>", methods=["POST"])
-@login_required
-def add_guest(room_number):
-    data = load_data()
-    room = get_room(data, room_number)
-
-    if not room:
-        return redirect("/")
-
-    guest_id = request.form["id"].strip()
-    name = request.form["name"].strip()
-    checkin = request.form["checkin"].strip()
-    checkout = request.form["checkout"].strip()
-    note = request.form["note"].strip()
-
-    if not guest_id or not name:
-        return redirect(f"/room/{room_number}")
-
-    # تحقق من ID مكرر
-    for r in data:
-        for g in r["guests"]:
-            if g.get("id") == guest_id:
-                return redirect(f"/room/{room_number}")
-
-    room["guests"].append({
-    "id": guest_id,
-    "name": name,
-    "checkin": checkin,
-    "checkout": checkout,
-    "note": note
-})
-    save_data(data)
-    return redirect(f"/room/{room_number}")
     
 @app.route("/edit_days/<room_number>/<guest_id>", methods=["POST"])
 @login_required
