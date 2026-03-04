@@ -31,8 +31,16 @@
                 <input name="id" class="form-control" placeholder="ID" required>
             </div>
 
-            <div class="col-md-4">
-                <input name="name" class="form-control" placeholder="Name" required>
+            <div class="col-md-3">
+                <input name="checkin" type="date" class="form-control" required>
+            </div>
+
+            <div class="col-md-3">
+                <input name="checkout" type="date" class="form-control" required>
+            </div>
+
+            <div class="col-md-3">
+                <input name="note" class="form-control" placeholder="Note (optional)">
             </div>
 
             <div class="col-md-3">
@@ -57,8 +65,9 @@
                 <tr>
                     <th>ID</th>
                     <th>Name</th>
-                    <th>Days Left</th>
-                    <th>Change Days</th>
+                    <th>Check-in></th>
+                    <th>Check-out</th>
+                    <th>Note</th>
                     <th>Remove</th>
                 </tr>
             </thead>
@@ -68,27 +77,11 @@
                 <tr>
                     <td>{{ g.id }}</td>
                     <td>{{ g.name }}</td>
+                    <td>{{ g.checkin }}</td>
+                    <td>{{ g.checkout }}</td>
+                    <td>{{ g.note }}</td>
 
-                    <td>
-                        {% if g.days_left == 0 %}
-                            <span class="badge bg-danger">Expired</span>
-                        {% elif g.days_left <= 3 %}
-                            <span class="badge bg-warning text-dark">
-                                {{ g.days_left }} days
-                            </span>
-                        {% else %}
-                            <span class="badge bg-success">
-                                {{ g.days_left }} days
-                            </span>
-                        {% endif %}
-                    </td>
-
-                    <td>
-                        <form method="POST" action="/edit_days/{{ room.room }}/{{ g.id }}" class="d-flex gap-2 justify-content-center">
-                            <input name="change" type="number" class="form-control form-control-sm w-50">
-                            <button class="btn btn-primary btn-sm">Update</button>
-                        </form>
-                        </td>
+                    
 <td>
     <form method="POST"
           action="/delete_guest/{{ room.room }}/{{ g.id }}"
@@ -96,7 +89,6 @@
         <button class="btn btn-danger btn-sm">Delete</button>
     </form>
 </td>
-                    </td>
                 </tr>
                 {% endfor %}
             </tbody>

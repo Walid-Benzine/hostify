@@ -177,10 +177,12 @@ def room_details(room_number):
 
     for g in room["guests"]:
         guests_with_days.append({
-            "id": g.get("id"),
-            "name": g.get("name"),
-            "days_left": remaining_days(g)
-        })
+         "id": g.get("id"),
+         "name": g.get("name"),
+         "checkin": g.get("checkin"),
+         "checkout": g.get("checkout"),
+         "note": g.get("note")
+    })
 
     return render_template(
         "room_details.html",
@@ -198,8 +200,10 @@ def add_guest(room_number):
         return redirect("/")
 
     guest_id = request.form["id"].strip()
-    name = request.form["name"].strip()
-    stay_days = request.form["stay_days"].strip()
+name = request.form["name"].strip()
+checkin = request.form["checkin"].strip()
+checkout = request.form["checkout"].strip()
+note = request.form["note"].strip()
 
     if not guest_id or not name or not stay_days.isdigit():
         return redirect(f"/room/{room_number}")
@@ -211,12 +215,12 @@ def add_guest(room_number):
                 return redirect(f"/room/{room_number}")
 
     room["guests"].append({
-        "id": guest_id,
-        "name": name,
-        "stay_days": int(stay_days),
-        "checkin": str(date.today())
-    })
-
+    "id": guest_id,
+    "name": name,
+    "checkin": checkin,
+    "checkout": checkout,
+    "note": note
+})
     save_data(data)
     return redirect(f"/room/{room_number}")
     
