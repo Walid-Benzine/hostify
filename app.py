@@ -329,3 +329,26 @@ def backup():
 def logout():
     session.pop("user", None)
     return redirect("/login")
+
+
+@app.route("/edit_guest/<room_number>/<guest_id>", methods=["GET","POST"])
+@login_required
+def edit_guest(room_number, guest_id):
+
+    data = load_data()
+    room = get_room(data, room_number)
+
+    guest = None
+    for g in room["guests"]:
+        if str(g["id"]) == guest_id:
+            guest = g
+
+    if request.method == "POST":
+        guest["checkout"] = request.form["checkout"]
+        guest["note"] = request.form["note"]
+
+        save_data(data)
+
+        return redirect(f"/room/{room_number}")
+
+    return render_template("edit_guest.html", guest=guest, room=room)

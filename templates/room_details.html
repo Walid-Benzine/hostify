@@ -34,7 +34,7 @@
             <div class="col-md-3">
                 <input name="name" class="form-control" placeholder="Name" required>
             </div>
-            
+
             <div class="col-md-3">
                 <input name="checkin" type="date" class="form-control" required>
             </div>
@@ -45,10 +45,6 @@
 
             <div class="col-md-3">
                 <input name="note" class="form-control" placeholder="Note (optional)">
-            </div>
-
-            <div class="col-md-3">
-                <input name="stay_days" type="number" class="form-control" placeholder="Days" required>
             </div>
 
             <div class="col-md-2 d-grid">
@@ -72,6 +68,7 @@
                     <th>Check-in></th>
                     <th>Check-out</th>
                     <th>Note</th>
+                    <th>Edit</th>
                     <th>Remove</th>
                 </tr>
             </thead>
@@ -84,7 +81,12 @@
                     <td>{{ g.checkin }}</td>
                     <td>{{ g.checkout }}</td>
                     <td>{{ g.note }}</td>
-
+                    
+                    <td>
+                    <a href="/edit_guest/{{ room.room }}/{{ g.id }}" class="btn btn-warning btn-sm">
+                    Edit
+                    </a>
+                    </td>
                     
 <td>
     <form method="POST"
