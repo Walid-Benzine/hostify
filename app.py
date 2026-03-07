@@ -57,9 +57,14 @@ def get_room(data, room_number):
 
 # ================= DAYS =================
 def remaining_days(g):
-    checkin = datetime.strptime(g["checkin"], "%Y-%m-%d").date()
-    passed = (date.today() - checkin).days
-    return max(g.get("stay_days", 0) - passed, 0)
+
+    if not g.get("checkout"):
+        return 999
+
+    checkout = datetime.strptime(g["checkout"], "%Y-%m-%d").date()
+    today = date.today()
+
+    return (checkout - today).days
 
 
 @app.route("/login", methods=["GET", "POST"])
